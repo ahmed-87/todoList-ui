@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './Header';
+import Body from './Body';
+import { BrowserRouter as Router } from "react-router-dom";
+import LoadingMask from './LoadingMask';
+import {connect} from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  componentDidMount(){
+
+  }
+
+  render() {
+    return (
+      <div>
+      <LoadingMask {...this.props}/>
+        <Router>
+          <div id="header">
+            <Header />
+          </div>
+          <div id="body">
+            <Body />
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  const {isLoading, message} = state.util;
+    return {isLoading, message};
+}
+
+export default connect(mapStateToProps)(App);
