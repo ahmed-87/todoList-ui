@@ -4,13 +4,19 @@ export const updateUser = (userDetails) => {
     return (dispatch) => {
         API.post("/user/update", userDetails)
         .then((response) => {
-            return {
-                type : "SUCC_UPDATE_USER"
-            }
+            let toestDetails = {
+                type : 'info',
+                title : 'User Updated',
+                description : 'Your user profile updated successfully !!!'
+            };
+            dispatch({type: "FIRE_TOAST", payload : toestDetails});
         }).catch((error) => {
-            return {
-                type : "FAIL_UPDATE_USER"
-            }
+            let toestDetails = {
+                type : 'error',
+                title : 'Update failed',
+                description : 'Failed to update user profile :('
+            };
+            dispatch({type: "FIRE_TOAST", payload : toestDetails});
         })
     }
 }
