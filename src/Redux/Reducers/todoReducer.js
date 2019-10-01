@@ -3,15 +3,13 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    switch(action.type){
+    const {type, payload} = action;
+
+    switch(type){
         case 'SUCC_GET_TODO':
-            return {...state, list : action.payload};
+            return {...state, list : payload};
         case 'FAIL_GET_TODO':
             return {...state, list : []};
-        // case 'SUCC_ADD_TODO':
-        //     return {...state, list : action.payload};
-        // case 'FAIL_ADD_TODO':
-        //     return {...state, list : []};
         default:
             return state;
     }
