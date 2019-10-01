@@ -91,7 +91,7 @@ const mapDispatchToProps = dispatch => {
         signIn: (userProfile) => dispatch(signIn(userProfile)),
         signOut: () => dispatch(signOut()),
         updateUser: (userDetails) => dispatch(updateUser(userDetails)),
-        openModal: (todo) => dispatch({type: "OPEN_MODAL"}),
+        openModal: (todo) => dispatch({type: "OPEN_MODAL", payload : {}}),
     }
 }
 const mapStateToProps = (state) => {

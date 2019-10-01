@@ -1,15 +1,15 @@
 import React from 'react';
 import {Link } from "react-router-dom";
 import GoogleAuth from './GoogleAuth';
-import {connect} from 'react-redux';
 import {Menu} from 'semantic-ui-react';
 
 class Header extends React.Component {
 
   render() {
+    const {user} = this.props;
     let authLinks = [];
 
-    if(this.props.isSignedIn && this.props.isSignedIn === true){
+    if(user.isSignedIn && user.isSignedIn === true){
       authLinks.push(
         <Link to="/to-do-list" className="item" key="my_to_do_list">
             My ToDo List
@@ -28,16 +28,10 @@ class Header extends React.Component {
           Home
         </Link>
         {authLinks}
-        <GoogleAuth />
+        <GoogleAuth user={user}/>
       </Menu>
     );
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isSignedIn: state.auth.isSignedIn
-  }
-}
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;
