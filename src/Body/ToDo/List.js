@@ -32,8 +32,8 @@ const ToDoList = (props) => {
                  );
             }
             return (
-                <Item key={index}>
-                    <Item.Content verticalAlign="top" key={index}>
+                <Item key={todo.id} id={todo.id}>
+                    <Item.Content verticalAlign="top">
 
                         <Item.Header>
                             {todo.title} -  {status(todo.completed)}
